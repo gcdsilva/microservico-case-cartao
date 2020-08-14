@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-@FeignClient(name = "pagamento")
+@FeignClient(name = "pagamento", configuration = PagamentoClientConfiguration.class)
 public interface FaturaClient {
 
-    @GetMapping("pagamento/{id_cartao}")
-    List<ResponseFaturaDTO> buscaPorCartao(@RequestParam("clienteId") String clienteId, @PathVariable("id_cartao") Long id);
+    @GetMapping("pagamento/{cliente-id}/{cartao-id}")
+    List<ResponseFaturaDTO> buscaPorCartao(@PathVariable("cliente-id") String clienteId, @PathVariable("cartao-id") String cartaoId);
 }
 

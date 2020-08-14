@@ -21,8 +21,10 @@ public class FaturaService {
     FaturaRepository faturaRepository;
 
 
-    public List<ResponseFaturaDTO> buscaFaturaPorIdClientCartao( String clienteId, Long cartaoId){
-        return faturaClient.buscaPorCartao(clienteId, cartaoId);
+    public List<ResponseFaturaDTO> buscaFaturaPorIdClientCartao( String clienteId, String cartaoId){
+        List<ResponseFaturaDTO> resposta = faturaClient.buscaPorCartao(clienteId, cartaoId);
+
+        return resposta;
     }
 
     public FaturaPaga pagar(FaturaPaga faturaPaga){

@@ -28,6 +28,11 @@ public class PagamentoController {
 		return service.buscarPorCartao(id);
 	}
 
+	@GetMapping("/{cliente-id}/{cartao-id}")
+	public List<Pagamento> buscaPorCartaoCliente(@PathVariable("cliente-id") String clienteId, @PathVariable("cartao-id") String cartaoId){
+		return service.buscarPorCartaoCliente(clienteId, cartaoId);
+	}
+
 
 
 

@@ -20,23 +20,23 @@ public class FaturaController
     @Autowired
     FaturaService faturaService;
 
-    @GetMapping("{cliente-id}/{cartao-id}")
-    public List<ResponseFaturaDTO> consultaFatura(@PathVariable("cliente-id") String clienteId, @PathVariable("cartao-id") Long cartaoId){
+    @GetMapping("/{cliente-id}/{cartao-id}")
+    public List<ResponseFaturaDTO> consultaFatura(@PathVariable("cliente-id") String clienteId, @PathVariable("cartao-id") String cartaoId){
         return faturaService.buscaFaturaPorIdClientCartao(clienteId, cartaoId);
     }
 
-    @PostMapping("{cliente-id}/{cartao-id}/pagar")
-    public ResponseFaturaPagaDTO pagarFatura(@PathVariable("cliente-id") String clienteId, @PathVariable("cartao-id") Long cartaoId){
+    @PostMapping("/{cliente-id}/{cartao-id}/pagar")
+    public ResponseFaturaPagaDTO pagarFatura(@PathVariable("cliente-id") String clienteId, @PathVariable("cartao-id") String cartaoId){
 
         List<ResponseFaturaDTO> listaFatura = faturaService.buscaFaturaPorIdClientCartao(clienteId, cartaoId);
 
-        BigDecimal valorTotal = null;
+        String valorTotal = "0";
         for (ResponseFaturaDTO fatura :listaFatura ) {
-            valorTotal.add(fatura.getValor());
+            valorTotal = new BigDecimal(valorTotal).add(fatura.getValor()).toString();
         }
 
         FaturaPaga faturaPaga = new FaturaPaga();
-        faturaPaga.setValor(valorTotal);
+        faturaPaga.setValor(new BigDecimal(valorTotal));
         faturaPaga.setDataPagamento(new Date());
 
 

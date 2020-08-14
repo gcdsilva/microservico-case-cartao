@@ -46,4 +46,7 @@ public class PagamentoService {
 		
 	}
 
+	public List<Pagamento> buscarPorCartaoCliente(String clienteId, String cartaoId) {
+		return buscarPorCartao(cartaoId);
+	}
 }

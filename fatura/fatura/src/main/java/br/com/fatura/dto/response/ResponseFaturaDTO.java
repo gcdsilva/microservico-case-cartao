@@ -6,7 +6,7 @@ public class ResponseFaturaDTO {
 
     private Long id;
 
-    private Long cartao_id;
+    private String cartaoId;
 
     private String descricao;
 
@@ -20,12 +20,12 @@ public class ResponseFaturaDTO {
         this.id = id;
     }
 
-    public Long getCartao_id() {
-        return cartao_id;
+    public String getCartaoId() {
+        return cartaoId;
     }
 
-    public void setCartao_id(Long cartao_id) {
-        this.cartao_id = cartao_id;
+    public void setCartaoId(String cartaoId) {
+        this.cartaoId = cartaoId;
     }
 
     public String getDescricao() {

@@ -1,17 +1,16 @@
 package br.com.fatura.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+@Table(name="fatura")
 public class FaturaPaga {
 
     @Id
-    @GeneratedValue
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private BigDecimal valor;
 
@@ -19,13 +18,13 @@ public class FaturaPaga {
 
     private String idCliente;
 
-    private Long idCartao;
+    private String idCartao;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,11 +52,11 @@ public class FaturaPaga {
         this.idCliente = idCliente;
     }
 
-    public Long getIdCartao() {
+    public String getIdCartao() {
         return idCartao;
     }
 
-    public void setIdCartao(Long idCartao) {
+    public void setIdCartao(String idCartao) {
         this.idCartao = idCartao;
     }
 }
