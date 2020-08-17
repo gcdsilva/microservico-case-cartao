@@ -6,12 +6,9 @@ import br.com.cartao.exception.ClienteNotAvailableException;
 
 public class ClienteClientFallback implements ClienteClient {
 
-
     @Override
-    public ClienteDTO buscarPorId(Long id) {
-
+    public ClienteDTO buscarPorId(Long id)  {
         throw new ClienteNotAvailableException();
 
-        return null;
     }
 }

@@ -1,7 +1,7 @@
 package br.com.fatura.service;
 
 
-import br.com.fatura.client.FaturaClient;
+import br.com.fatura.client.PagamentoClient;
 import br.com.fatura.dto.response.ResponseFaturaDTO;
 import br.com.fatura.entity.FaturaPaga;
 import br.com.fatura.repository.FaturaRepository;
@@ -15,14 +15,14 @@ public class FaturaService {
 
 
     @Autowired
-    FaturaClient faturaClient;
+    PagamentoClient pagamentoClient;
 
     @Autowired
     FaturaRepository faturaRepository;
 
 
     public List<ResponseFaturaDTO> buscaFaturaPorIdClientCartao( String clienteId, String cartaoId){
-        List<ResponseFaturaDTO> resposta = faturaClient.buscaPorCartao(clienteId, cartaoId);
+        List<ResponseFaturaDTO> resposta = pagamentoClient.buscaPorCartao(clienteId, cartaoId);
 
         return resposta;
     }

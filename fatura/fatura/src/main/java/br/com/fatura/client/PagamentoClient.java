@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 @FeignClient(name = "pagamento", configuration = PagamentoClientConfiguration.class)
-public interface FaturaClient {
+public interface PagamentoClient {
 
     @GetMapping("pagamento/{cliente-id}/{cartao-id}")
-    List<ResponseFaturaDTO> buscaPorCartao(@PathVariable("cliente-id") String clienteId, @PathVariable("cartao-id") String cartaoId);
+    List<ResponseFaturaDTO> buscaPorCartao(@PathVariable("cliente-id") String clienteId, @PathVariable("cartao-id") String cartaoId) throws PagamentoNotAvaibleException;
 }
 
